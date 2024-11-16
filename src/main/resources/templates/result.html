@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Result</title>
+
+    <style>
+        #myElement {
+          white-space: pre;
+        }
+        span {
+          white-space: pre;
+        }
+    </style>
+
+</head>
+<body>
+<h1>You have entered: <span th:text="${input}"></span></h1>
+<h1>You have entered: <span th:text="${input1}"></span></h1>
+<h1>You have entered: <span th:text="${input2}"></span></h1>
+<h1>You have entered: <div id="myElement" th:text="${input}">intput3</div></h1>
+<h1>You have entered: <span th:text="${input}">input4</span></h1>
+<h1>You have entered: <pre th:text="${input}">5</pre></h1>
+
+<a href="/inputForm">Back</a>
+</body>
+</html>

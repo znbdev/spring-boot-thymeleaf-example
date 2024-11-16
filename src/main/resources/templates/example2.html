@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-select vs Select Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="myElement" data-select="initialValue">Hello World</div>
+<button id="setButton">Set Data-select and Select</button>
+<button id="getButton">Get Data-select and Select</button>
+
+<script>
+    // 定义一个用于存储 select 值的变量
+    var select = 'initialSelectValue';
+
+    $(document).ready(function() {
+        $('#setButton').click(function() {
+            // 使用 data-select 设置值
+            $('#myElement').attr('data-select', 'newDataValue');
+
+            // 设置 select 的值
+            select = 'newSelectValue';
+        });
+
+        $('#getButton').click(function() {
+            // 获取 data-select 的值
+            var dataSelectValue = $('#myElement').attr('data-select');
+
+            // 获取 select 的值
+            console.log('Data-select Value: ' + dataSelectValue); // 输出: Data-select Value: newDataValue
+            console.log('Select Value: ' + select); // 输出: Select Value: newSelectValue
+
+            // 获取初始的 data-select 值
+            $('#myElement').attr('data-select', 'initialValue');
+            console.log('Reset Data-select Value: ' + $('#myElement').attr('data-select')); // 输出: Reset Data-select Value: initialValue
+        });
+    });
+</script>
+</body>
+</html>

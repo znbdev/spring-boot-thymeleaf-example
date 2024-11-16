@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Data vs Attr Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="myElement" data-custom="customValue">Hello World</div>
+<button id="setButton">Set Data and Attr</button>
+<button id="getButton">Get Data and Attr</button>
+
+<script>
+    $(document).ready(function() {
+        $('#setButton').click(function() {
+            // 使用 .data() 设置数据
+            $('#myElement').data('myData', 'dataValue');
+
+            // 使用 .attr() 设置属性
+            $('#myElement').attr('myAttr', 'attrValue');
+        });
+
+        $('#getButton').click(function() {
+            // 使用 .data() 获取数据
+            var dataValue = $('#myElement').data('myData');
+            // 使用 .attr() 获取属性
+            var attrValue = $('#myElement').attr('myAttr');
+
+            // 输出结果到控制台
+            console.log('Data Value: ' + dataValue); // Outputs: Data Value: dataValue
+            console.log('Attr Value: ' + attrValue); // Outputs: Attr Value: attrValue
+
+            // 也可以获取 data-custom 属性
+            var customData = $('#myElement').attr('data-custom');
+            console.log('Data Custom: ' + customData); // Outputs: Data Custom: customValue
+        });
+    });
+</script>
+</body>
+</html>
