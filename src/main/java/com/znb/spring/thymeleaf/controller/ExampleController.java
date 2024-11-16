@@ -49,4 +49,9 @@ public class ExampleController {
         return "result";
     }
 
+    @GetMapping("/spa")
+    public String spa(Model model) {
+        return "spa";
+    }
+
 }
