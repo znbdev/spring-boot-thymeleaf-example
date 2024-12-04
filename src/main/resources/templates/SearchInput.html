@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Input Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<label for="searchInput"></label><input type="text" id="searchInput">
+<ul id="suggestionList"></ul>
+
+<script>
+    $(document).ready(function() {
+      $('#searchInput').on('input', function() {
+        var keyword = $(this).val();
+        $.ajax({
+          url: 'http://localhost:8081/api/guest/suggest', // 后台接口地址
+          data: { keyword: keyword },
+          success: function(data) {
+            $('#suggestionList').empty();
+            $.each(data, function(index, suggestion) {
+              $('#suggestionList').append('<li>' + suggestion + '</li>');
+            });
+          }
+        });
+      });
+    });
+</script>
+</body>
+</html>
