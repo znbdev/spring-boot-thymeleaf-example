@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .suggest-area {
+            position: absolute;
+            width: 750px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            display: none;
+            z-index: 1000;
+        }
+        .suggest-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+    <title>建议功能示例</title>
+</head>
+<body>
+
+<div class="p-suggest-wrap">
+    <label for="inputCode"></label>
+    <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"
+           type="text" placeholder="品番 / 発注コード / JANを输入"
+           class="c-form-op--thin-2">
+    <div id="suggestions" class="suggest-area"></div>
+</div>
+
+<script>
+    const items = [
+        { key: 'A', name: 'おたふく　Ａ耐熱アルミ手袋　２本指２９ｃｍ　' },
+        { key: 'A', name: 'ヒシ　カードホルダー　３６×２２９　ナチュラル　ナチュラル' },
+        { key: 'B', name: '商品B描述' },
+        { key: 'C', name: '商品C描述' },
+        // 可以继续添加更多商品
+    ];
+
+    const input = document.getElementById('inputCode');
+    const suggestionsBox = document.getElementById('suggestions');
+
+    input.addEventListener('input', function () {
+        console.log('Input event triggered');
+        const query = input.value.toLowerCase();
+        suggestionsBox.innerHTML = '';  // 清空建议框
+        suggestionsBox.style.display = 'none';  // 隐藏建议框
+
+        if (query) {
+            // 过滤 items
+            const filteredItems = items.filter(item =>
+                item.key.toLowerCase() === query || item.name.toLowerCase().includes(query)
+            );
+
+            // 添加匹配的建议项
+            filteredItems.forEach(item => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.className = 'suggest-item';
+                suggestionItem.textContent = item.name;
+                suggestionItem.addEventListener('click', function () {
+                    input.value = item.name;  // 设置输入框的值为点击的建议项
+                    suggestionsBox.innerHTML = '';
+                    suggestionsBox.style.display = 'none';  // 隐藏建议框
+                });
+
+                suggestionsBox.appendChild(suggestionItem);
+            });
+
+            // 如果有匹配的建议显示建议框
+            if (filteredItems.length > 0) {
+                suggestionsBox.style.display = 'block';
+            }
+        }
+    });
+
+    // 处理 onblur 事件
+    input.addEventListener('blur', function () {
+        setTimeout(() => {
+            suggestionsBox.innerHTML = '';
+            suggestionsBox.style.display = 'none';
+        }, 100);
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!input.contains(e.target) && !suggestionsBox.contains(e.target)) {
+            suggestionsBox.innerHTML = '';
+            suggestionsBox.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
