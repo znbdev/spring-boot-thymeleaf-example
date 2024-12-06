@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建议功能示例</title>
+    <style>
+        .suggest-item:hover {
+            background-color: #f0f0f0;
+        }
+        .suggest-area {
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none; /* 初始隐藏建议框 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="p-suggest-wrap">
+    <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"
+           type="text" placeholder="输入商品名称" class="c-form-op--thin-2">
+    <div id="suggestions" class="suggest-area"></div>
+</div>
+
+<script type="text/javascript" src="js/suggest_ob.js"></script>
+</body>
+</html>
