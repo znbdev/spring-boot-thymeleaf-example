@@ -53,4 +53,14 @@ public class ExampleController {
         return "spa";
     }
 
+    @GetMapping("/suggest")
+    public String suggest(Model model) {
+        return "suggest";
+    }
+
+    @GetMapping("/suggest4ob")
+    public String suggestOb(Model model) {
+        return "suggest_Ob";
+    }
+
 }
