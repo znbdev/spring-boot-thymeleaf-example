@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: 3600
+  thymeleaf:
+    cache: false # 缓存开关，生产环境设定为true
+    check-template-location: true # 检查模版是否存在
+    enabled: true # 是否启用
+    encoding: UTF-8 # 模版编码
+    suffix: .html # 模版后缀
+    mode: HTML5 # 模版模式

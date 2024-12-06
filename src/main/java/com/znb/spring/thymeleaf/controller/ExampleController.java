@@ -2,7 +2,6 @@ package com.znb.spring.thymeleaf.controller;
 
 import com.znb.spring.thymeleaf.util.SpaceToNbsp;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
