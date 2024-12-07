@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     suggestionsBox.appendChild(suggestionItem);
 
                     suggestionItem.addEventListener('click', function() {
-                        input.value = item.name; // 填充输入框
+                        input.value = item.key; // 填充输入框
                         suggestionsBox.innerHTML = ''; // 清空建议框
                         suggestionsBox.style.display = 'none'; // 隐藏建议框
                     });
