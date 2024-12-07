@@ -18,43 +18,47 @@
 </head>
 <body>
 
-<!--<div class="p-suggest-wrap">-->
-<!--    <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"-->
-<!--           type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op&#45;&#45;thin-2">-->
-<!--    <div id="suggestions" class="suggest-area"></div>-->
-<!--</div>-->
-
 <!--<script type="text/javascript" src="/js/test_script.js?name=Alice&age=30"></script>-->
 
-<!--<script type="text/javascript" src="js/suggest_ob.js?inputId=A&siteId=ob"></script>-->
 
 <div class="p-suggest-wrap">
-    <input id="itemCode" name="itemCode" onblur="loadSuggestScript()" maxlength="40" autocomplete="off" type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op--thin-2 js-suggest-quickorder">
-    <span class="suggestScript" id="suggestScriptSpan">
-            <script type="text/javascript" id="suggestScript" src="js/suggest_ob.js?inputId=itemCode&siteId=ob"></script>
-        </span>
-    <div class="suggest-area" style="display: none; position: absolute; width: 750px; top: 29px; left: 0px;"></div>
+    <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"
+           type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op--thin-2">
     <div id="suggestions" class="suggest-area"></div>
 </div>
+<span class="suggestScript">
+    <script type="text/javascript" src="js/suggest_ob.js?inputId=inputCode&siteId=ob"></script>
+</span>
 
-<script type="text/javascript">
-    function loadSuggestScript() {
-        const inputCode = document.getElementById('itemCode').value;
 
-        // 移除之前的脚本标签（如果存在）
-        const existingScript = document.getElementById('suggestScript');
-        if (existingScript) {
-            document.getElementById('suggestScriptSpan').removeChild(existingScript);
-        }
+<!--<div class="p-suggest-wrap">-->
+<!--    <input id="itemCode" name="itemCode" onblur="loadSuggestScript()" maxlength="40" autocomplete="off" type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op&#45;&#45;thin-2 js-suggest-quickorder">-->
+<!--    <span class="suggestScript" id="suggestScriptSpan">-->
+<!--            <script type="text/javascript" id="suggestScript" src="js/suggest_ob.js?inputId=itemCode&siteId=ob"></script>-->
+<!--        </span>-->
+<!--    <div class="suggest-area" style="display: none; position: absolute; width: 750px; top: 29px; left: 0px;"></div>-->
+<!--    <div id="suggestions" class="suggest-area"></div>-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    function loadSuggestScript() {-->
+<!--        const inputCode = document.getElementById('itemCode').value;-->
 
-        // 创建新的脚本标签
-        const script = document.createElement('script');
-        script.id = 'suggestScript'; // 给新脚本一个id，以便后续移除
-        script.src = `js/suggest_ob.js?inputId=${encodeURIComponent(inputCode)}&siteId=ob`;
+<!--        // 移除之前的脚本标签（如果存在）-->
+<!--        const existingScript = document.getElementById('suggestScript');-->
+<!--        if (existingScript) {-->
+<!--            document.getElementById('suggestScriptSpan').removeChild(existingScript);-->
+<!--        }-->
 
-        // 将新脚本添加到示例标签中
-        document.getElementById('suggestScriptSpan').appendChild(script);
-    }
-</script>
+<!--        // 创建新的脚本标签-->
+<!--        const script = document.createElement('script');-->
+<!--        script.id = 'suggestScript'; // 给新脚本一个id，以便后续移除-->
+<!--        script.src = `js/suggest_ob.js?inputId=${encodeURIComponent(inputCode)}&siteId=ob`;-->
+
+<!--        // 将新脚本添加到示例标签中-->
+<!--        document.getElementById('suggestScriptSpan').appendChild(script);-->
+<!--    }-->
+<!--</script>-->
+
+
 </body>
 </html>

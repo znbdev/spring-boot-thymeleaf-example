@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const items = [
         { key: 'A', name: '商品A1描述' },
         { key: 'A', name: '商品A2描述' },
-        { key: 'A', name: '商品A3描述' },
+        { key: 'A3', name: '商品A3描述' },
         { key: 'B', name: '商品B描述' },
         { key: 'C', name: '商品C描述' },
         // 可以继续添加更多商品
