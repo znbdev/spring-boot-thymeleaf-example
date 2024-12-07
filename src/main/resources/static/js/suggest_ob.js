@@ -69,11 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             suggestScriptSpan.setAttribute('data-article-name', item.name); // 设置
 //                            suggestScriptSpan.textContent = item.name; // 将 item.name 添加到 <span> 的文本中
                         }
-                        // 将 item.name 设定在 <div> 中
-                        const productDescription = document.getElementById('productDescription');
-                        if (productDescription) {
-                            productDescription.textContent = item.name; // 将 item.name 添加到 <div> 中
-                        }
                     });
                 });
             } else {
