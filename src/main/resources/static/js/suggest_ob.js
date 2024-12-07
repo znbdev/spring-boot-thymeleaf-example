@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         input.value = item.key; // 填充输入框
                         suggestionsBox.innerHTML = ''; // 清空建议框
                         suggestionsBox.style.display = 'none'; // 隐藏建议框
+                        // 直接找到 HTML 中的 <span class="suggestScript">
+                        const suggestScriptSpan = document.querySelector('.suggestScript');
+                        // 设置 data-article-name 属性
+                        if (suggestScriptSpan) {
+                            suggestScriptSpan.setAttribute('data-article-name', item.name); // 设置
+//                            suggestScriptSpan.textContent = item.name; // 将 item.name 添加到 <span> 的文本中
+                        }
                     });
                 });
             } else {
