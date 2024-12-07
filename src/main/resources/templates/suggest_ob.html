@@ -19,16 +19,23 @@
 <body>
 
 <!--<script type="text/javascript" src="/js/test_script.js?name=Alice&age=30"></script>-->
-
-
-<div class="p-suggest-wrap">
-    <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"
-           type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op--thin-2">
-    <div id="suggestions" class="suggest-area"></div>
-</div>
-<span class="suggestScript">
-    <script type="text/javascript" src="js/suggest_ob.js?inputId=inputCode&siteId=ob"></script>
-</span>
+<table>
+    <tr>
+        <td>
+            <div class="p-suggest-wrap">
+                <input id="inputCode" name="inputCode" maxlength="40" autocomplete="off"
+                       type="text" placeholder="品番 / 発注代码 / JANを输入" class="c-form-op--thin-2">
+                <div id="suggestions" class="suggest-area"></div>
+            </div>
+            <span class="suggestScript">
+                <script type="text/javascript" src="js/suggest_ob.js?inputId=inputCode&siteId=ob"></script>
+            </span>
+        </td>
+        <td>
+            <div id="productDescription" class="product-area"></div>
+        </td>
+    </tr>
+</table>
 
 
 <!--<div class="p-suggest-wrap">-->
