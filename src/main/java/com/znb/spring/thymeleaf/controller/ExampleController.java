@@ -60,7 +60,7 @@ public class ExampleController {
 
     @GetMapping("/suggest4ob")
     public String suggestOb(Model model) {
-        return "suggest_Ob";
+        return "suggest_ob";
     }
 
 }
