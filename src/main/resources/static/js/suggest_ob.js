@@ -9,6 +9,7 @@ console.log('inputId= ' + paramInputId);
 const paramSiteId = params.get('siteId');
 console.log('siteId= ' + paramSiteId);
 
+let previousQuery = ''; // 用于保存上一次的检索内容
 
 document.addEventListener('DOMContentLoaded', function() {
     const items = [
@@ -42,6 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const query = input.value.toLowerCase(); // 从输入框获取值
             suggestionsBox.innerHTML = '';  // 清空建议框
+            console.log('query= ' + query);
+            console.log('previousQuery= ' + previousQuery);
+
+            // 在检索内容发生变化时保存上一次的检索内容
+            if (query !== previousQuery) {
+                previousQuery = query; // 更新上一次的检索内容
+                console.log('Updated previousQuery= ' + previousQuery);
+            }
 
             // 过滤匹配的商品
             const filteredItems = items.filter(item => item.name.toLowerCase().includes(query));
