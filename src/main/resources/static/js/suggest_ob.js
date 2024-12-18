@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return; // 如果输入框不存在，则停止执行
         }
 
+        // 共通方法：检查输入框是否为空
+        function checkInputEmpty(input, suggestionsBox) {
+            const query = input.value.toLowerCase(); // 从输入框获取值
+            // 检查输入框是否为空
+            if (query === '') {
+                document.getElementById('productDescription').innerHTML = ''; // 清空 productDescription
+                suggestionsBox.style.display = 'none'; // 隐藏建议框
+                return true; // 返回 true 表示输入框为空
+            }
+            return false; // 返回 false 表示输入框不为空
+        }
+
+        // input 事件监听器
         input.addEventListener('input', function () {
 
             const query = input.value.toLowerCase(); // 从输入框获取值
@@ -92,10 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('query= ' + query);
 
             // 检查输入框是否为空
-            if (query === '') {
-                document.getElementById('productDescription').innerHTML = ''; // 清空 productDescription
-                suggestionsBox.style.display = 'none'; // 隐藏建议框
-                return; // 不执行后续的匹配逻辑
+            if (checkInputEmpty(input, suggestionsBox)) {
+                    return; // 如果输入框为空，提前返回, 避免执行后续的匹配逻辑
             }
 
             // 过滤匹配的商品
@@ -125,6 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 suggestionsBox.innerHTML = '';
                 suggestionsBox.style.display = 'none';
             }
+        });
+
+        // blur 事件监听器
+        input.addEventListener('blur', function () {
+            checkInputEmpty(input, suggestionsBox); // 失去焦点时进行检查
         });
     }
 
