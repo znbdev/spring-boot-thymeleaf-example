@@ -13,8 +13,8 @@ let previousQuery = ''; // 用于保存上一次的检索内容
 
 document.addEventListener('DOMContentLoaded', function() {
     const items = [
-        { key: 'A', name: '商品A1描述' },
-        { key: 'A', name: '商品A2描述' },
+        { key: 'A1', name: '商品A1描述' },
+        { key: 'A2', name: '商品A2描述' },
         { key: 'A3', name: '商品A3描述' },
         { key: 'B', name: '商品B描述' },
         { key: 'C', name: '商品C描述' },
@@ -78,6 +78,40 @@ document.addEventListener('DOMContentLoaded', function() {
                             suggestScriptSpan.setAttribute('data-article-name', item.name); // 设置
 //                            suggestScriptSpan.textContent = item.name; // 将 item.name 添加到 <span> 的文本中
                         }
+                    });
+                });
+            } else {
+                suggestionsBox.style.display = 'none'; // 无匹配项则隐藏建议框
+            }
+        });
+
+        // focus 事件监听器
+        input.addEventListener('focus', function () {
+            const query = input.value.toLowerCase(); // 从输入框获取值
+            suggestionsBox.innerHTML = '';  // 清空建议框
+            console.log('query= ' + query);
+
+            // 检查输入框是否为空
+            if (query === '') {
+                document.getElementById('productDescription').innerHTML = ''; // 清空 productDescription
+                suggestionsBox.style.display = 'none'; // 隐藏建议框
+                return; // 不执行后续的匹配逻辑
+            }
+
+            // 过滤匹配的商品
+            const filteredItems = items.filter(item => item.name.toLowerCase().includes(query));
+
+            // 如果有匹配项，显示建议框
+            if (filteredItems.length > 0) {
+                suggestionsBox.style.display = 'block';
+                filteredItems.forEach(item => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggest-item';
+                    suggestionItem.textContent = item.name;
+                    suggestionsBox.appendChild(suggestionItem);
+
+                    suggestionItem.addEventListener('click', function() {
+                        input.value = item.key; // 填充输入框
                     });
                 });
             } else {
