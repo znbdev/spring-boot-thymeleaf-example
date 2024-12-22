@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌入式检索功能示例</title>
+<!--    <link rel="stylesheet" href="../static/css/search-component.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search-component.css}"/>
+</head>
+<body>
+<h1>嵌入式检索功能示例</h1>
+<div id="search-component"></div>
+
+<!--<script src="../static/js/search-component.js"></script>-->
+<script type="text/javascript" th:src="@{/js/search-component.js}"></script>
+
+<script>
+    // 示例数据
+    var sampleData = [
+      'a1',
+      'a2',
+      'b1',
+      'b2',
+      '苹果',
+      '香蕉',
+      '橙子',
+      '葡萄',
+      '西瓜',
+      '菠萝',
+      '草莓',
+      '蓝莓',
+      '芒果',
+      '柠檬'
+    ];
+
+    // 初始化检索组件
+    new SearchComponent({
+      elementId: 'search-component',
+      data: sampleData
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.search-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.search-results {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-results li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+}

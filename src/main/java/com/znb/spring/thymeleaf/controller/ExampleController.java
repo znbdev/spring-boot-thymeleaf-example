@@ -63,4 +63,9 @@ public class ExampleController {
         return "suggest_ob";
     }
 
+    @GetMapping("/search")
+    public String search(Model model) {
+        return "search";
+    }
+
 }
