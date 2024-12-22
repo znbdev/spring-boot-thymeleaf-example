@@ -48,25 +48,3 @@
   // 暴露全局变量
   global.SearchComponent = SearchComponent;
 })(window);
-
-// 示例数据
-//var sampleData = [
-//  '苹果',
-//  '香蕉',
-//  '橙子',
-//  '葡萄',
-//  '西瓜',
-//  '菠萝',
-//  '草莓',
-//  '蓝莓',
-//  '芒果',
-//  '柠檬'
-//];
-//
-//// 初始化检索组件
-//new SearchComponent({
-//  elementId: 'search-component',
-//  data: sampleData
-//});
-//
-//console.log('SearchComponent initialized');
