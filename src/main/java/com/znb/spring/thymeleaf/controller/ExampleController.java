@@ -68,4 +68,9 @@ public class ExampleController {
         return "search";
     }
 
+    @GetMapping("/jsTry")
+    public String jsTry(Model model) {
+        return "jsTry";
+    }
+
 }

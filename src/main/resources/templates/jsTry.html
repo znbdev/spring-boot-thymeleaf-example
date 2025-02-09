@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入身份匹配</title>
+</head>
+<body>
+
+<input type="text" id="roleInput" placeholder="输入身份（admin/user/guest）" oninput="updateContent()">
+<p id="content">请在输入框输入身份</p>
+
+<script>
+    const contentMap = new Map([
+        ["admin", "欢迎管理员！"],
+        ["user", "欢迎用户！"],
+        ["guest", "欢迎游客！"]
+    ]);
+
+    function getContent(role) {
+        return contentMap.get(role) || "未知角色";
+    }
+
+    function updateContent() {
+        const role = document.getElementById("roleInput").value.toLowerCase();
+        document.getElementById("content").textContent = getContent(role);
+    }
+</script>
+
+</body>
+</html>
