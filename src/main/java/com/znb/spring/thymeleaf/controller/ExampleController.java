@@ -1,7 +1,9 @@
 package com.znb.spring.thymeleaf.controller;
 
 import com.znb.spring.thymeleaf.bean.User;
+import com.znb.spring.thymeleaf.service.SampleService;
 import com.znb.spring.thymeleaf.util.SpaceToNbsp;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +16,11 @@ import org.springframework.web.util.HtmlUtils;
 import javax.validation.Valid;
 
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 public class ExampleController {
+
+    private final SampleService sampleService;
 
     @GetMapping("/example1")
     public String example1(Model model) {
@@ -85,6 +90,9 @@ public class ExampleController {
 
     @PostMapping("/register")
     public String processForm(@Valid User user, BindingResult bindingResult) {
+
+        sampleService.setMsgType(user);
+
         if (bindingResult.hasErrors()) {
             return "register";
         }
