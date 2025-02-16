@@ -18,6 +18,10 @@
     <input type="text" id="email" th:field="*{email}" th:errorclass="error"><br>
     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span><br>
 
+    <label for="note">备注：</label>
+    <input type="text" id="note" th:field="*{note}" th:errorclass="error"><br>
+    <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}" class="error"></span><br>
+
     <button type="submit">提交</button>
 </form>
 </body>
