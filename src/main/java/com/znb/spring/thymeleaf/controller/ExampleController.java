@@ -1,13 +1,17 @@
 package com.znb.spring.thymeleaf.controller;
 
+import com.znb.spring.thymeleaf.bean.User;
 import com.znb.spring.thymeleaf.util.SpaceToNbsp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.HtmlUtils;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -71,6 +75,21 @@ public class ExampleController {
     @GetMapping("/jsTry")
     public String jsTry(Model model) {
         return "jsTry";
+    }
+
+    @GetMapping("/register")
+    public String showForm(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String processForm(@Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+        // 处理表单提交
+        return "success";
     }
 
 }
