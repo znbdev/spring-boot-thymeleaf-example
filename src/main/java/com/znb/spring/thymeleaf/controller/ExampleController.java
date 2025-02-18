@@ -88,7 +88,7 @@ public class ExampleController {
 
     @GetMapping("/downloadPage")
     public String downloadPage(Model model) {
-        return "download";
+        return "downloadPage";
     }
 
     @GetMapping("/download")

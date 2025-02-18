@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>文件下载</title>
+    <script>
+        function promptForAuthCode(filename) {
+            var userConfirmed = confirm("是否输入验证码进行下载？");
+            if (userConfirmed) {
+                var authCode = prompt("请输入验证码:", "");
+                if (authCode === null || authCode.trim() === "") {
+                    alert("验证码不能为空，请重试。");
+                    return;
+                }
+                window.location.href = "/download?filename=" + encodeURIComponent(filename) + "&authCode=" + encodeURIComponent(authCode);
+            }
+        }
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>文件下载</h1>
+<table>
+    <tr>
+        <th>文件名</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td><span>cfa-2.5.12-premium-universal-release.apk</span></td>
+        <td><button onclick="promptForAuthCode('cfa-2.5.12-premium-universal-release.apk')">下载文件</button></td>
+    </tr>
+    <tr>
+        <td><span>v2ray-znb.run.place.yaml</span></td>
+        <td><button onclick="promptForAuthCode('v2ray-znb.run.place.yaml')">下载文件</button></td>
+    </tr>
+</table>
+</body>
+</html>
