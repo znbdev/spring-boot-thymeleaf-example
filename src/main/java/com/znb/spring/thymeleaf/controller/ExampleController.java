@@ -1,6 +1,7 @@
 package com.znb.spring.thymeleaf.controller;
 
 import com.znb.spring.thymeleaf.bean.User;
+import com.znb.spring.thymeleaf.service.DownloadFileService;
 import com.znb.spring.thymeleaf.service.SampleService;
 import com.znb.spring.thymeleaf.util.SpaceToNbsp;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.validation.Valid;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,6 +24,7 @@ import javax.validation.Valid;
 public class ExampleController {
 
     private final SampleService sampleService;
+    private final DownloadFileService downloadFileService;
 
     @GetMapping("/example1")
     public String example1(Model model) {
@@ -80,6 +84,33 @@ public class ExampleController {
     @GetMapping("/jsTry")
     public String jsTry(Model model) {
         return "jsTry";
+    }
+
+    @GetMapping("/download")
+    public String downloadFile(HttpServletResponse response, @RequestParam(required = false) String filename, @RequestParam(required = false) String authCode, Model model) throws IOException {
+        // 检查 filename 和 authCode 是否为空
+        if (filename == null || filename.isEmpty()) {
+            model.addAttribute("errorMessage", "文件名参数缺失，请重试。");
+            return "auth_code_error";
+        }
+        if (authCode == null || authCode.isEmpty()) {
+            model.addAttribute("errorMessage", "验证码参数缺失，请重试。");
+            return "auth_code_error";
+        }
+
+        // 定义正确的认证码
+        String correctAuthCode = "12345"; // 这里可以替换为实际的认证码逻辑
+
+        // 验证认证码
+        if (!correctAuthCode.equals(authCode)) {
+            // 认证码不正确，返回错误页面或信息
+            model.addAttribute("errorMessage", "验证码错误，请重试。");
+            return "error"; // 假设有一个错误页面
+        }
+
+        // 认证码正确，调用DownloadFileService进行文件下载
+        downloadFileService.downloadFile(response, filename);
+        return null; // 返回null表示直接响应文件下载
     }
 
     @GetMapping("/register")
