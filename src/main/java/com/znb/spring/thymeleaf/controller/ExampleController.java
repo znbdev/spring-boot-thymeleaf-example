@@ -86,6 +86,11 @@ public class ExampleController {
         return "jsTry";
     }
 
+    @GetMapping("/downloadPage")
+    public String downloadPage(Model model) {
+        return "download";
+    }
+
     @GetMapping("/download")
     public String downloadFile(HttpServletResponse response, @RequestParam(required = false) String filename, @RequestParam(required = false) String authCode, Model model) throws IOException {
         // 检查 filename 和 authCode 是否为空
