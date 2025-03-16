@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.znb.spring.thymeleaf.entity.Tutorial;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,10 @@ public class TutorialController {
 
   @PostMapping("/tutorials/save")
   public String saveTutorial(Tutorial tutorial, RedirectAttributes redirectAttributes) {
+    if (StringUtils.isEmpty(tutorial.getTitle())) {
+      redirectAttributes.addFlashAttribute("message", "Please enter the title of the tutorial!");
+      return "redirect:/tutorials/new";
+    }
     try {
       tutorialRepository.save(tutorial);
 

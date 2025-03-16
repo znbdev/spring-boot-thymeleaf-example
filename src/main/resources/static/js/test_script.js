@@ -65,6 +65,16 @@ $(document).ready(function () {
                 } else {
                     // 如果返回false，设置背景颜色为红色
                     $("body").css("background-color", "red");
+
+                    // 使用示例
+                    const tutorialData = {
+                      title: "test title",
+                      description: "test description",
+                      level: 1,
+                      published: true
+                    };
+
+                    saveTutorial(tutorialData);
                 }
             },
             error: function () {
@@ -73,3 +83,31 @@ $(document).ready(function () {
         });
     });
 });
+
+function saveTutorial(tutorialData) {
+  fetch('/tutorials/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // 如果你的应用使用CSRF保护，你可能需要包含CSRF token
+      // 'X-CSRF-TOKEN': 'your-csrf-token-here'
+    },
+    body: JSON.stringify(tutorialData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Tutorial saved successfully:', data);
+    // 处理成功响应，例如显示成功消息或更新UI
+  })
+  .catch(error => {
+//    console.error('Error saving tutorial:', error);
+    // 处理错误，例如显示错误消息
+    // 重新加载页面
+    location.reload();
+  });
+}
